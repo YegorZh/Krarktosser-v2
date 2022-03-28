@@ -1,2 +1,33 @@
-$font-family: 'Roboto', sans-serif;
+$font-family: "Roboto", sans-serif;
 
+// Font-sizes
+$font-size-h2: 26px;
+$font-size-h3: 20px;
+
+// Colors
+$color-primary: #181818;
+$color-secondary: #282828;
+$color-accent: #f0f0f0;
+$color-pure: #fff;
+
+// Mixins
+
+@mixin animated-underline($width, $margin, $leftside: false) {
+    &-underline {
+        $margin-auto: auto;
+        @if $leftside {
+            $margin-auto: $margin;
+            $margin: auto;
+        }
+        margin-left: $margin-auto;
+        margin-right: $margin;
+        width: 0;
+        display: block;
+        border-bottom: 1px solid $color-accent;
+        transition: 0.35s;
+    }
+
+    &:hover &-underline {
+        width: $width;
+    }
+}
