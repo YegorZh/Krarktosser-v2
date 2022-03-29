@@ -2,14 +2,9 @@
 @import '../../../styles/variables';
 
 .navbar {
-    padding: 12px 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 0 0 5px 5px;
+    @include appbar;
     box-shadow: 0 2px 5px rgba($color: #000000, $alpha: 0.25);
-    background: $color-secondary;
-    color: $color-accent;
+    justify-content: space-between;
 }
 
 .navbar__title {

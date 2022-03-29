@@ -5,10 +5,14 @@ $font-size-h2: 26px;
 $font-size-h3: 20px;
 
 // Colors
+$color-background: #3b3b3b;
 $color-primary: #181818;
-$color-secondary: #282828;
+$color-secondary: #303030;
 $color-accent: #f0f0f0;
 $color-pure: #fff;
+
+// Breakpoint
+$breakpoint-tablet: 962px;
 
 // Mixins
 
@@ -30,4 +34,14 @@ $color-pure: #fff;
     &:hover &-underline {
         width: $width;
     }
+}
+
+@mixin appbar {
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+    background: $color-secondary;
+    color: $color-accent;
 }

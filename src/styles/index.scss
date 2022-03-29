@@ -1,5 +1,5 @@
-@import './reset';
-@import './variables';
+@import "./reset";
+@import "./variables";
 
 // Global
 a {
@@ -7,12 +7,21 @@ a {
     color: inherit;
 }
 
+body {
+    background: $color-background;
+}
+
 // Classes
 .app {
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 100vw;
+    max-width: $breakpoint-tablet;
     min-height: 100vh;
     font-family: $font-family;
     background: $color-primary;
+    box-shadow: 0px 1px 4px rgba($color: #000000, $alpha: 0.25);
 }
