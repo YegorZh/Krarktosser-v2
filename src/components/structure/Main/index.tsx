@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import InputField from "./sub/InputField";
 import Results from "./sub/Results";
 import settingsData from "./settings";
-import { appContext } from "../../App";
+import { appContext, IAppContext } from "../../App";
 import { Settings, StateSettings } from "./settings";
 import './index.scss';
 
@@ -11,8 +11,7 @@ import './index.scss';
 
 
 const Main: React.FC = () => {
-    const [settings, setSettings] = useState<StateSettings>(settingsData);
-    const context = useContext(appContext);
+    const { showSettings, settings, setSettings } = useContext(appContext) as IAppContext;
 
     const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, id: string) => {
         setSettings(prevSettings => {
@@ -36,7 +35,7 @@ const Main: React.FC = () => {
             <div className="main__button-wrapper">
                 <button className="main__button">toss</button>
             </div>
-            <div className={`main__form ${context?.showSettings && 'main__form-appear'}`}>
+            <div className={`main__form ${showSettings && 'main__form-appear'}`}>
                 {InputList}
             </div>
         </main>

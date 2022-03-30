@@ -1,5 +1,6 @@
 type Settings = {
     value: string,
+    default: string,
     name: string,
     dependancy?: { execute: (settings: StateSettings) => boolean },
     validation?: { execute: (value: string) => string },
@@ -25,11 +26,13 @@ const defaultValidation = {
 const settingsData: StateSettings = {
     amount: {
         value: '1',
+        default: '1',
         name: 'Amount',
         validation: defaultValidation,
     },
     krarkAmount: {
         value: '0',
+        default: '0',
         name: `Krark's Thumb`,
         validation: {
             execute: (value: string) => {
@@ -43,35 +46,45 @@ const settingsData: StateSettings = {
     },
     side: {
         value: 'None',
+        default: 'None',
         name: 'Priority',
         options: ['None', 'True', 'False'],
         dependancy: defaultDependancy,
     },
     evenSpread: {
         value: 'False',
+        default: 'False',
         name: 'Even spread',
         options: ['True', 'False'],
         dependancy: defaultDependancy,
     },
     minPrio: {
         value: '0',
+        default: '0',
         name: 'Min priority',
         dependancy: defaultDependancy,
+        validation: defaultValidation,
     },
     maxPrio: {
         value: '0',
+        default: '0',
         name: 'Max priority',
         dependancy: defaultDependancy,
+        validation: defaultValidation,
     },
     minSecond: {
         value: '0',
+        default: '0',
         name: 'Min secondary',
         dependancy: defaultDependancy,
+        validation: defaultValidation,
     },
     maxSecond: {
         value: '0',
+        default: '0',
         name: 'Max secondary',
         dependancy: defaultDependancy,
+        validation: defaultValidation,
     },
 }
 
