@@ -2,6 +2,22 @@
 @import "./variables";
 
 // Global
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+select {
+    /* for Firefox */
+    -moz-appearance: none;
+    /* for Chrome */
+    -webkit-appearance: none;
+}
+
+/* For IE10 */
+select::-ms-expand {
+    display: none;
+}
+
 a {
     text-decoration: none;
     color: inherit;

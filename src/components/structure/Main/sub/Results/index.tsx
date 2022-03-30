@@ -16,7 +16,7 @@ const Results: React.FC = () => {
                 </div>
             </div>
             <div className="results__wrapper results__wrapper-bottom-row">
-                <h2 className="results__title">Total Tosses</h2>
+                <h2 className="results__title">Total Flips</h2>
                 <span className="results__result results__result-total">0</span>
             </div>
         </div>

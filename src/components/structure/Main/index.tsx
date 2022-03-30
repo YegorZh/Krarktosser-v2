@@ -3,17 +3,12 @@ import InputField from "./sub/InputField";
 import Results from "./sub/Results";
 import settingsData from "./settings";
 import { appContext } from "../../App";
+import { Settings, StateSettings } from "./settings";
 import './index.scss';
 
-type Settings = {
-    value: string,
-    name: string,
-    options?: string[]
-}
 
-type StateSettings = {
-    [key: string]: Settings;
-}
+
+
 
 const Main: React.FC = () => {
     const [settings, setSettings] = useState<StateSettings>(settingsData);
@@ -22,12 +17,19 @@ const Main: React.FC = () => {
     const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, id: string) => {
         setSettings(prevSettings => {
             const newSettings = { ...prevSettings };
-            newSettings[id].value = event.target.value;
+            const value = event.target.value;
+            const validated = newSettings[id].validation?.execute(value);
+            newSettings[id].value = validated || value;
             return newSettings;
         });
     };
 
-    const InputList = Object.keys(settings).map(key => <InputField {...settings[key]} onChangeHandler={onChangeHandler} id={key} key={key} />)
+    const InputList = Object.keys(settings).map(key => <InputField
+        {...settings[key]}
+        onChangeHandler={onChangeHandler}
+        id={key}
+        key={key}
+        disabled={settings[key].dependancy?.execute(settings)} />)
     return (
         <main className="main">
             <Results />
