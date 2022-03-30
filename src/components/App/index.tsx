@@ -1,4 +1,4 @@
-import React, { SetStateAction, useState, Dispatch } from 'react';
+import React, { SetStateAction, useState, useRef, Dispatch, createRef } from 'react';
 import '../../styles/index.scss';
 import Navbar from '../structure/Navbar';
 import Main from '../structure/Main';
@@ -9,7 +9,8 @@ interface IAppContext {
     showSettings: boolean,
     setShowSettings: Dispatch<SetStateAction<boolean>>,
     settings: StateSettings,
-    setSettings: Dispatch<SetStateAction<StateSettings>>
+    setSettings: Dispatch<SetStateAction<StateSettings>>,
+    resultsDiv: React.MutableRefObject<HTMLDivElement | null>
 }
 
 const appContext = React.createContext<IAppContext | null>(null);
@@ -17,11 +18,12 @@ const appContext = React.createContext<IAppContext | null>(null);
 const App: React.FC = () => {
     const [settings, setSettings] = useState<StateSettings>(settingsData);
     const [showSettings, setShowSettings] = useState<boolean>(false);
+    const resultsDiv = useRef(null);
 
     return (
         <div className="app">
             <Navbar />
-            <appContext.Provider value={{ showSettings, setShowSettings, settings, setSettings }}>
+            <appContext.Provider value={{ showSettings, setShowSettings, settings, setSettings, resultsDiv }}>
                 <Main />
                 <BottomMenu />
             </appContext.Provider>
