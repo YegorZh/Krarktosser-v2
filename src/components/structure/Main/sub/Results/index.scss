@@ -1,0 +1,54 @@
+@import "../../../../../styles/reset";
+@import "../../../../../styles/variables";
+
+.results {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.results__top-row {
+    width: 100%;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.results__wrapper {
+    min-width: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 14px;
+    border-radius: 22px;
+    box-shadow: 0 1px 5px rgba($color: #000000, $alpha: 0.4);
+    background-color: $color-secondary;
+    color: $color-body;
+    text-align: center;
+
+    &-bottom-row {
+        grid-column: span 2;
+    }
+}
+.results__title {
+    margin-bottom: 8px;
+}
+.results__result {
+    font-size: 22px;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 10px rgba($color: #000000, $alpha: 0.75) inset;
+    background: $color-primary;
+    color: $color-text-dark;
+    width: 110px;
+    letter-spacing: 0.1rem;
+    border-radius: 14px;
+    padding: 6px 8px;
+}

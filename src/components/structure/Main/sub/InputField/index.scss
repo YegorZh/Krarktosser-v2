@@ -1,0 +1,31 @@
+@import "../../../../../styles/reset";
+@import "../../../../../styles/variables";
+
+.main__input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.main__input-title {
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 2px;
+    color: $color-body;
+}
+
+.main__input-field {
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+    padding: 1px 0;
+    background: $color-between;
+    color: $color-text-dark;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 0 1px 10px rgba($color: #000000, $alpha: 0.5) inset;
+    border-radius: 5px;
+
+    &:focus {
+        outline: 1px solid $color-text-darker;
+    }
+}

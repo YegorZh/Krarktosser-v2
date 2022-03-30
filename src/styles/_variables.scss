@@ -5,14 +5,19 @@ $font-size-h2: 26px;
 $font-size-h3: 20px;
 
 // Colors
-$color-background: #3b3b3b;
-$color-primary: #181818;
-$color-secondary: #303030;
+$color-background: #1f2022;
+$color-primary: #1b1b1b;
+$color-between: #202020;
+$color-secondary: #404040;
+$color-body: #c0c0c0;
 $color-accent: #f0f0f0;
+$color-text-dark: #a8a8a8;
+$color-text-darker: #707070;
 $color-pure: #fff;
 
 // Breakpoint
-$breakpoint-tablet: 962px;
+$breakpoint-tablet: 425px;
+$breakpoint-phone: 600px;
 
 // Mixins
 

@@ -13,15 +13,19 @@ body {
 
 // Classes
 .app {
+    border-left: 1px solid $color-secondary;
+    border-right: 1px solid $color-secondary;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
     width: 100vw;
+    height: 100vh;
     max-width: $breakpoint-tablet;
-    min-height: 100vh;
     font-family: $font-family;
-    background: $color-primary;
+    background: $color-between;
+    border-radius: 1px solid $color-accent;
+    color: $color-accent;
     box-shadow: 0px 1px 4px rgba($color: #000000, $alpha: 0.25);
 }
