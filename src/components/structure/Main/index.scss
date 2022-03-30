@@ -2,19 +2,23 @@
 @import "../../../styles/variables";
 
 .main {
-    padding: 48px 0;
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
+    height: calc(100% - 198px);
     width: 100%;
+    gap: 1.4rem;
     align-items: center;
     overflow: hidden;
-}
+    overflow-y: auto;
 
-.main__button-wrapper {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    margin-top: 32px;
+    &__top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 16px 0;
+        margin: auto 0;
+        gap: 24px;
+    }
 }
 
 .main__button {
@@ -45,9 +49,26 @@
     }
 }
 
+.main__form-container {
+    position: absolute;
+    bottom: calc(-100vh + 100px + 142px);
+    width: 100%;
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    transition: 0.65s;
+    
+    &--appear {
+        overflow-y: auto;
+        bottom: 56px;
+    }
+}
+
 .main__form {
-    position: fixed;
-    bottom: -379px;
+    z-index: 500;
+    // position: fixed;
+    height: 520px;
     display: grid;
     padding: 26px;
     border-radius: 10px;
@@ -57,7 +78,6 @@
     background-color: $color-secondary;
     transition: 0.5s;
 
-    &-appear {
-        bottom: 85px;
+    &--appear {
     }
 }

@@ -31,13 +31,18 @@ const Main: React.FC = () => {
         disabled={settings[key].dependancy?.execute(settings)} />)
     return (
         <main className="main">
-            <Results />
-            <div className="main__button-wrapper">
-                <button className="main__button">toss</button>
+            <div className="main__top">
+                <Results />
+                <div className="main__button-wrapper">
+                    <button className="main__button">toss</button>
+                </div>
             </div>
-            <div className={`main__form ${showSettings && 'main__form-appear'}`}>
-                {InputList}
+            <div className={`main__form-container ${showSettings && 'main__form-container--appear'}`}>
+                <div className={`main__form ${showSettings && 'main__form--appear'}`}>
+                    {InputList}
+                </div>
             </div>
+            <div className="main__blur"></div>
         </main>
     )
 };

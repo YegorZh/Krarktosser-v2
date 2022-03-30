@@ -2,6 +2,7 @@
 @import "../../../styles/variables";
 
 .bottom-menu {
+    z-index: 1000;
     @include appbar;
     justify-content: right;
     align-items: center;
