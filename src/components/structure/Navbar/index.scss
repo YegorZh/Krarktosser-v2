@@ -19,6 +19,8 @@
 
 .navbar__icon {
     size: 32px;
-
+    background: none;
+    cursor: pointer
+    ;
     @include animated-underline(100%, 0px, true)
 }

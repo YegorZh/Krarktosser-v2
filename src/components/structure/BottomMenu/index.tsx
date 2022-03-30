@@ -5,7 +5,10 @@ import './index.scss';
 
 const BottomMenu: React.FC = () => {
     const context = useContext(appContext);
-    const handleClickSettings = () => context?.setShowSettings(n => !n);
+    const handleClickSettings = () => {
+        if(context?.formDiv.current?.scrollTop) context.formDiv.current.scrollTop = 0;
+        context?.setShowSettings(n => !n);
+    }
     const handleClickClear = () => context?.setSettings(prevSettings => {
         const newSettings = { ...prevSettings };
         Object.keys(newSettings).map(key => newSettings[key].value = newSettings[key].default);

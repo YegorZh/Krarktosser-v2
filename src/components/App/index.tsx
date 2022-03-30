@@ -8,9 +8,11 @@ import settingsData, { StateSettings } from '../structure/Main/settings'
 interface IAppContext {
     showSettings: boolean,
     setShowSettings: Dispatch<SetStateAction<boolean>>,
+    showGuide: boolean,
+    setShowGuide: Dispatch<SetStateAction<boolean>>,
     settings: StateSettings,
     setSettings: Dispatch<SetStateAction<StateSettings>>,
-    resultsDiv: React.MutableRefObject<HTMLDivElement | null>
+    formDiv: React.MutableRefObject<HTMLDivElement | null>
 }
 
 const appContext = React.createContext<IAppContext | null>(null);
@@ -18,12 +20,13 @@ const appContext = React.createContext<IAppContext | null>(null);
 const App: React.FC = () => {
     const [settings, setSettings] = useState<StateSettings>(settingsData);
     const [showSettings, setShowSettings] = useState<boolean>(false);
-    const resultsDiv = useRef(null);
+    const [showGuide, setShowGuide] = useState<boolean>(false);
+    const formDiv = useRef(null);
 
     return (
         <div className="app">
-            <Navbar />
-            <appContext.Provider value={{ showSettings, setShowSettings, settings, setSettings, resultsDiv }}>
+            <appContext.Provider value={{ showSettings, setShowSettings, showGuide, setShowGuide, settings, setSettings, formDiv }}>
+                <Navbar />
                 <Main />
                 <BottomMenu />
             </appContext.Provider>

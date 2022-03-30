@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import InputField from "./sub/InputField";
 import Results from "./sub/Results";
-import settingsData from "./settings";
 import { appContext, IAppContext } from "../../App";
-import { Settings, StateSettings } from "./settings";
+import { Settings } from "./settings";
+import Guide from "./sub/Guide";
 import './index.scss';
 
 
@@ -11,7 +11,7 @@ import './index.scss';
 
 
 const Main: React.FC = () => {
-    const { showSettings, settings, setSettings } = useContext(appContext) as IAppContext;
+    const { showSettings, settings, setSettings, formDiv, showGuide } = useContext(appContext) as IAppContext;
 
     const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, id: string) => {
         setSettings(prevSettings => {
@@ -37,12 +37,13 @@ const Main: React.FC = () => {
                     <button className="main__button">toss</button>
                 </div>
             </div>
-            <div className={`main__form-container ${showSettings && 'main__form-container--appear'}`}>
+            <div ref={formDiv} className={`main__form-container ${showSettings && 'main__form-container--appear'}`}>
                 <div className={`main__form ${showSettings && 'main__form--appear'}`}>
                     {InputList}
                 </div>
             </div>
-            <div className="main__blur"></div>
+            <div className={`main__blur ${showSettings && 'main__blur--appear'}`}></div>
+            <div className={`main__guide-container ${showGuide && 'main__guide-container--appear'}`}><Guide /></div>
         </main>
     )
 };

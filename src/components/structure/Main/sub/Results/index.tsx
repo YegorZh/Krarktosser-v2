@@ -1,12 +1,10 @@
-import React, { useContext, useRef } from "react";
+import React from "react";
 import './index.scss';
-import { appContext } from "../../../../App";
 
 const Results: React.FC = () => {
-    const context = useContext(appContext);
 
     return (
-        <div className="results" ref={context?.resultsDiv}>
+        <div className="results">
             <div className="results__top-row">
                 <div className="results__wrapper">
                     <h2 className="results__title">Heads</h2>
