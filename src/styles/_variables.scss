@@ -21,6 +21,7 @@ $breakpoint-phone: 600px;
 $breakpoint-vertical: 900px;
 
 // Mixins
+$app-height: 100%;
 
 @mixin animated-underline($width, $margin, $leftside: false) {
     &-underline {

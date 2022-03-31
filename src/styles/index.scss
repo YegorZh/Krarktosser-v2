@@ -1,6 +1,9 @@
 @import "./reset";
 @import "./variables";
-
+// css var
+:root {
+    --app-height: 100%;
+}
 // Global
 /* width */
 ::-webkit-scrollbar {
@@ -47,10 +50,8 @@ a {
 
 html, body {
     background: $color-background;
-    height: 100vh;
-    height: -webkit-fill-available;
-    height: -moz-available;
-    height: fill-available;
+    // height: 100vh;
+    height: var(--app-height);
 }
 
 // Classes
