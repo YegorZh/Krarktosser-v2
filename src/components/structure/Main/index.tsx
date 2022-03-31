@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import InputField from "./sub/InputField";
 import Results from "./sub/Results";
 import { appContext, IAppContext } from "../../App";
@@ -6,13 +6,27 @@ import { Settings } from "./settings";
 import Guide from "./sub/Guide";
 import './index.scss';
 
-
-
-
-
 const Main: React.FC = () => {
     const { showSettings, settings, setSettings, formDiv, showGuide } = useContext(appContext) as IAppContext;
+    const [tossButton, setTossButton] = useState(0);
+    const [isRequesting, setIsRequesting] = useState(false);
+    const [results, setResults] = useState({ heads: 0, tails: 0, totalFlips: 0 });
 
+    useEffect(() => {
+        if(isRequesting) return;
+        setIsRequesting(true);
+        let req = 'https://krarktosser.herokuapp.com/api/coin?';
+        Object.keys(settings).forEach(key => {
+            if (settings[key].value) req += key + '=' + settings[key].value.toLowerCase() + '&';
+        })
+        fetch(req)
+            .then(repsone => repsone.json())
+            .then(data => setResults(data))
+            .catch(err => alert(err))
+            .then(() => setIsRequesting(false));
+    }, [tossButton])
+
+    const onTossHandler = () => setTossButton(Date.now);
     const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, id: string) => {
         setSettings(prevSettings => {
             const newSettings = { ...prevSettings };
@@ -32,9 +46,14 @@ const Main: React.FC = () => {
     return (
         <main className="main">
             <div className="main__top">
-                <Results />
+                <Results {...results} isRequesting={isRequesting} />
                 <div className="main__button-wrapper">
-                    <button className="main__button">toss</button>
+                    <button
+                        className="main__button"
+                        onClick={onTossHandler}
+                    >
+                        toss
+                    </button>
                 </div>
             </div>
             <div ref={formDiv} className={`main__form-container ${showSettings && 'main__form-container--appear'}`}>

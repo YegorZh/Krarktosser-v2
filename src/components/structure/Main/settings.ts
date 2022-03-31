@@ -48,7 +48,7 @@ const settingsData: StateSettings = {
         value: 'None',
         default: 'None',
         name: 'Priority',
-        options: ['None', 'True', 'False'],
+        options: ['None', 'Heads', 'Tails'],
         dependancy: defaultDependancy,
     },
     evenSpread: {
