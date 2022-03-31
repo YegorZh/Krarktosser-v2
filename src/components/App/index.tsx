@@ -12,7 +12,8 @@ interface IAppContext {
     setShowGuide: Dispatch<SetStateAction<boolean>>,
     settings: StateSettings,
     setSettings: Dispatch<SetStateAction<StateSettings>>,
-    formDiv: React.MutableRefObject<HTMLDivElement | null>
+    formDiv: React.MutableRefObject<HTMLDivElement | null>,
+    mainDiv: React.MutableRefObject<HTMLDivElement | null>,
 }
 
 const appContext = React.createContext<IAppContext | null>(null);
@@ -22,10 +23,11 @@ const App: React.FC = () => {
     const [showSettings, setShowSettings] = useState<boolean>(false);
     const [showGuide, setShowGuide] = useState<boolean>(false);
     const formDiv = useRef(null);
+    const mainDiv = useRef(null)
 
     return (
         <div className="app">
-            <appContext.Provider value={{ showSettings, setShowSettings, showGuide, setShowGuide, settings, setSettings, formDiv }}>
+            <appContext.Provider value={{ showSettings, setShowSettings, showGuide, setShowGuide, settings, setSettings, formDiv, mainDiv }}>
                 <Navbar />
                 <Main />
                 <BottomMenu />

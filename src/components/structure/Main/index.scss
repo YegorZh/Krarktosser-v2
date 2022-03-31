@@ -108,3 +108,7 @@
         left: 0;
     }
 }
+
+.stop-transitions {
+    transition: none !important;
+}

@@ -7,9 +7,10 @@ interface PropsInput extends Settings {
     key?: string,
     id: string,
     onChangeHandler: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, id: string) => void,
+    onFocusHandler: () => void,
 }
 
-const InputField: React.FC<PropsInput> = ({ name, value, id, onChangeHandler, options, disabled }) => (
+const InputField: React.FC<PropsInput> = ({ name, value, id, onChangeHandler, options, disabled, onFocusHandler }) => (
     <div className={`main__input-wrapper ${disabled && 'main__input-wrapper--disabled'}`}>
         <h3 className="main__input-title">{name}</h3>
         {
@@ -20,6 +21,7 @@ const InputField: React.FC<PropsInput> = ({ name, value, id, onChangeHandler, op
                     type="text"
                     className="main__input-field"
                     onChange={(event) => onChangeHandler(event, id)}
+                    onFocus={onFocusHandler}
                     value={value}
                 />
                 :
