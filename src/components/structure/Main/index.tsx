@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import InputField from "./sub/InputField";
 import Results from "./sub/Results";
 import { appContext, IAppContext } from "../../App";
@@ -12,17 +13,18 @@ const Main: React.FC = () => {
     const [isRequesting, setIsRequesting] = useState(false);
     const [results, setResults] = useState({ heads: 0, tails: 0, totalFlips: 0 });
     const [stopTransitions, setStopTransitions] = useState(false);
+    const [isFirstRender, setIsFirstRender] = useState(true);
 
     useEffect(() => {
+        if(isFirstRender) {
+            setIsFirstRender(false);
+            return;
+        }
         if (isRequesting) return;
         setIsRequesting(true);
-        let req = 'https://krarktosser.herokuapp.com/api/coin?';
-        Object.keys(settings).forEach(key => {
-            if (settings[key].value) req += key + '=' + settings[key].value.toLowerCase() + '&';
-        })
-        fetch(req)
-            .then(repsone => repsone.json())
-            .then(data => setResults(data))
+        let url = 'https://krarktosser.herokuapp.com/api/coin?';
+        axios.get(url, {...settings})
+            .then(resp => setResults(resp.data))
             .catch(err => alert(err))
             .then(() => setIsRequesting(false));
     }, [tossButton]);

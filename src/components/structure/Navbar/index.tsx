@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
     return (
         <nav className="navbar">
             <button className="navbar__icon" onClick={handleGuideClick}><BsQuestionCircle size="28px" color="#F0F0F0" /><span className="navbar__icon-underline"></span></button>
-            <h2 className="navbar__title"><a href="/">Krarktosser</a><span className="navbar__title-underline"></span></h2>
+            <h2 className="navbar__title"><a href="#">Krarktosser</a><span className="navbar__title-underline"></span></h2>
         </nav>
     );
 }
