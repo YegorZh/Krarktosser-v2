@@ -49,6 +49,8 @@ html, body {
     background: $color-background;
     height: 100vh;
     height: -webkit-fill-available;
+    height: -moz-available;
+    height: fill-available;
 }
 
 // Classes
