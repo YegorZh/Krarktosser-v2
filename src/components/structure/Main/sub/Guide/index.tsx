@@ -2,11 +2,52 @@ import React from "react";
 import './index.scss';
 
 const Guide: React.FC = () => {
+    const settingsSection = [
+        { name: 'Amount', text: 'How many coins to throw.' },
+        {
+            name: `Krark's Thumb`,
+            text: `How many cards named "Krark's Thumb" you have in play.`,
+            notion: `Settings listed below won't take effect unless Krark's Thumb is larger than 0.`
+        },
+        { name: `Priority`, text: `Which side to try to prioritize with "Krark's Thumb" effect. None, Heads or Tails.` },
+        { name: `Even spread`, text: `If True tries to even out results.` },
+        { name: `Min priority`, text: `Minimum value to try and achieve for prioritized side.` },
+        { name: `Max priority`, text: `Maximum value for prioritized side. Once achieved tries to maximize secondary side.` },
+        { name: `Min secondary`, text: `Minimum value to try and achieve for secondary side.` },
+        {
+            name: `Max secondary`, text: `Maximum value for secondary side. Once achieved tries to maximize prioritized side.`,
+            notion: `If any of the parameters overlap given priority is used:\nMin Priority > Min Secondary > Max Priority > Max Secondary > Even Spread > Priority`
+        },
+    ]
 
     return (
         <div className="main__guide">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam officiis suscipit, sit et reprehenderit alias hic quam soluta necessitatibus minus, ab aliquid a fuga distinctio laboriosam ex doloremque, beatae ullam nesciunt ratione laborum mollitia! Ratione maiores ducimus nobis, porro sapiente voluptates labore vitae sint nisi doloremque culpa nesciunt consequuntur sunt libero eligendi voluptate explicabo placeat dolorum ipsum quidem cupiditate non sit facere excepturi. Adipisci cum eos perferendis! Voluptate vitae asperiores omnis, sequi itaque voluptatem reprehenderit nam aliquam earum iste commodi id minima qui necessitatibus molestias. Fuga natus pariatur accusamus consectetur, non animi quo. Tenetur, rerum voluptatibus reiciendis alias eius modi amet, illo veritatis aliquam voluptates et possimus debitis, minus esse ducimus beatae voluptatem doloremque dolores aut incidunt quis nisi. Ipsa modi magni accusantium quidem repellat officia assumenda rerum ad repudiandae libero cupiditate tenetur animi exercitationem numquam, nesciunt pariatur itaque distinctio eius at iusto voluptate? Fuga nam minima quia molestias unde, itaque debitis soluta quos reprehenderit tempore ipsa, eveniet beatae dolorem magni natus adipisci modi illum nulla aperiam! Error, eaque modi! Molestiae iure ex libero asperiores architecto porro provident nihil nam vel commodi tempore ipsum sapiente rerum dicta adipisci quia dolorem dolor deleniti esse nostrum officia, harum debitis amet? Quisquam aspernatur non fuga totam deleniti, cum aut ab laborum voluptas, quam autem. Rem, et, numquam voluptas nesciunt nemo sint, ratione doloribus molestiae quaerat autem animi. Ipsum ullam, temporibus quis optio aut suscipit, qui odio quibusdam pariatur magnam error facere tempora consequuntur dolor numquam illum, debitis dolores praesentium doloribus ducimus ex! Et accusamus, rem assumenda ipsum illo recusandae, iure voluptatem voluptatibus dolorum magni quia, sint tempore possimus officia nam qui architecto enim natus quod nisi. Laudantium sapiente explicabo assumenda reprehenderit placeat ratione et atque! Modi, vero minus impedit incidunt quo cum tempore fugiat tenetur perferendis quibusdam laborum nihil sint et eius animi eveniet vel voluptatem tempora! Porro illum ab architecto hic, minima odit necessitatibus cupiditate dolorem earum, quos quas! Laboriosam, aliquam, atque maiores rem magni nostrum excepturi repellendus sunt consequuntur numquam ipsam a magnam enim! Eius adipisci eligendi amet fugiat totam! Natus obcaecati libero nemo iure similique minima ratione, voluptas vel neque consequatur, voluptatem veniam perferendis deleniti quaerat. Hic ipsa laborum repellendus in at excepturi repudiandae perferendis minus quam sint corrupti dolorem non earum illo, dolorum officia iste sapiente. Ipsam minus quibusdam quasi, quae debitis dignissimos expedita doloremque reprehenderit quam neque! Laborum aliquid omnis accusamus magnam perspiciatis itaque animi assumenda, sed rem id accusantium cum commodi provident dignissimos totam non asperiores, consequuntur sequi nisi? Autem quisquam ipsum nobis sint accusamus suscipit, vero esse cupiditate ducimus dolores omnis eius corporis tenetur voluptatibus perferendis natus reprehenderit ad quos! Tempore, ullam eius ad maxime provident ipsum culpa animi praesentium rem quis deleniti obcaecati, iure quasi beatae similique accusamus optio? Blanditiis sequi alias quos vitae possimus quod laborum harum, distinctio repudiandae in sapiente reprehenderit, cumque, veniam hic nostrum suscipit? Eius quas perspiciatis cumque tenetur! Alias sit quos, facere voluptas porro corrupti aperiam cumque! Iste quam beatae officiis cupiditate maiores corrupti, eos velit, qui architecto distinctio alias.
-            </p>
+            <div className="guide__wrapper">
+                <h2 className="guide__title">What's this site about?</h2>
+                <p className="guide__text">
+                    The main feature of this site is coin tossing without hussle.
+                    You specify the amount and get results, without waiting or tedious animations.
+                    But if you activate advanced settings you can manipulate your results,
+                    simulating how card Krark's Thumb from Magic: The Gathering works.
+                </p>
+            </div>
+            <img
+                src="https://c1.scryfall.com/file/scryfall-cards/large/front/7/8/78a5d49a-747e-4ec8-a20a-ca917c315774.jpg?1610836017"
+                alt="Krark's Thumb the card."
+                className="guide__card"
+            />
+            <div className="guide__wrapper">
+                <h2 className="guide__title guide__title-settings">Settings</h2>
+                <div className="guide__settings-container">
+                    {settingsSection.map(n => (
+                        <div key={n.name} className="guide__settings-wrapper">
+                            <span className="guide__settings-name">{`${n.name}`}</span>
+                            <p className="guide__settings-text">{n.text}</p>
+                            {n.notion && <p className="guide__settings-notion">{n.notion}</p>}
+                        </div>)
+                    )}
+                </div>
+            </div>
         </div>
     )
 };
