@@ -45,15 +45,16 @@ a {
     color: inherit;
 }
 
-body {
+html, body {
     background: $color-background;
     height: 100vh;
+    height: -webkit-fill-available;
 }
 
 // Classes
 #root {
     display: flex;
-    height: 100vh;
+    height: 100%;
     align-items: center;
 }
 .app {
@@ -65,7 +66,7 @@ body {
     align-items: center;
     margin: 0 auto;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     max-height: $breakpoint-vertical;
     max-width: $breakpoint-tablet;
     font-family: $font-family;

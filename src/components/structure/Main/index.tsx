@@ -16,14 +16,15 @@ const Main: React.FC = () => {
     const [isFirstRender, setIsFirstRender] = useState(true);
 
     useEffect(() => {
-        if(isFirstRender) {
+        if (isFirstRender) {
             setIsFirstRender(false);
             return;
         }
         if (isRequesting) return;
         setIsRequesting(true);
         let url = 'https://krarktosser.herokuapp.com/api/coin?';
-        axios.get(url, {...settings})
+        Object.keys(settings).forEach(key => url += key + '=' + settings[key].value.toLowerCase() + '&')
+        axios.get(url)
             .then(resp => setResults(resp.data))
             .catch(err => alert(err))
             .then(() => setIsRequesting(false));

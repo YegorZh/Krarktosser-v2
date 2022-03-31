@@ -27,6 +27,7 @@
     background: $color-between;
     color: $color-text-dark;
     text-align: center;
+    text-align: -webkit-center;
     font-size: 18px;
     box-shadow: 0 1px 10px rgba($color: #000000, $alpha: 0.5) inset;
     border-radius: 5px;

@@ -17,7 +17,7 @@
         align-items: center;
         padding: 16px 0;
         margin: auto 0;
-        gap: 5vh;
+        gap: 32px;
     }
 }
 
@@ -51,9 +51,9 @@
 
 .main__form-container {
     position: absolute;
-    bottom: calc(max(-100vh, -1 * $breakpoint-vertical) + 100px + 142px);
+    bottom: calc(max(-1 * 100%, -1 * $breakpoint-vertical) + 100px + 142px);
     width: 100%;
-    height: calc(min(100vh, $breakpoint-vertical) - 100px);
+    height: calc(min(100%, $breakpoint-vertical) - 100px);
     display: flex;
     justify-content: center;
     overflow: hidden;
@@ -85,7 +85,7 @@
     position: absolute;
     opacity: 0;
     width: 100%;
-    height: calc(100vh - 112px);
+    height: calc(100% - 112px);
     transition: 0.5s;
     overflow: hidden;
     pointer-events: none;
@@ -100,7 +100,7 @@
     position: absolute;
     width: 100%;
     left: -100vw;
-    height: calc(100vh - 112px);
+    height: calc(100% - 112px);
     overflow-y: auto;
     transition: 0.75s;
 

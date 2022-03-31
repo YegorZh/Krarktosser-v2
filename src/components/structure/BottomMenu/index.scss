@@ -5,6 +5,8 @@
     z-index: 1000;
     @include appbar;
     justify-content: right;
+    display: -webkit-flex;
+    justify-content: -webkit-right;
     align-items: center;
     gap: 0.75rem;
     border-radius: 5px 5px 0 0;
