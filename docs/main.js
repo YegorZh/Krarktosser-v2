@@ -40857,10 +40857,17 @@ const Main = () => {
             .catch(err => alert(err))
             .then(() => setIsRequesting(false));
     }, [tossButton]);
+    const scrollMainTop = () => {
+        const scrollTop = mainDiv?.current?.scrollTop;
+        const scrollHeight = mainDiv.current?.scrollHeight;
+        const clientHeight = mainDiv.current?.clientHeight;
+        if (scrollTop || scrollTop === 0 && clientHeight && scrollHeight)
+            mainDiv.current?.scrollTo({ top: Number(scrollHeight) - Number(clientHeight) + 1, behavior: 'smooth' });
+    };
     // disable transitions on resize
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         let timer = null;
-        window.addEventListener('resize', function () {
+        window.addEventListener('resize', () => {
             if (timer) {
                 clearTimeout(timer);
                 timer = null;
@@ -40871,15 +40878,12 @@ const Main = () => {
                 setStopTransitions(false);
                 timer = null;
             }, 100);
+            scrollMainTop();
         });
     }, []);
     const onTossHandler = () => setTossButton(Date.now);
     const onFocusHandler = () => {
-        const scrollTop = mainDiv?.current?.scrollTop;
-        const scrollHeight = mainDiv.current?.scrollHeight;
-        const clientHeight = mainDiv.current?.clientHeight;
-        if (scrollTop || scrollTop === 0 && clientHeight && scrollHeight)
-            mainDiv.current?.scrollTo({ top: Number(scrollHeight) - Number(clientHeight) + 1, behavior: 'smooth' });
+        //  scrollMainTop();   
     };
     const onChangeHandler = (event, id) => {
         setSettings(prevSettings => {

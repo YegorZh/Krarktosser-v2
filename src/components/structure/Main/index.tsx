@@ -31,10 +31,19 @@ const Main: React.FC = () => {
             .then(() => setIsRequesting(false));
     }, [tossButton]);
 
+
+    const scrollMainTop = () => {
+        const scrollTop = mainDiv?.current?.scrollTop;
+        const scrollHeight = mainDiv.current?.scrollHeight;
+        const clientHeight = mainDiv.current?.clientHeight;
+        if (
+            scrollTop || scrollTop === 0 && clientHeight && scrollHeight
+        ) mainDiv.current?.scrollTo({ top: Number(scrollHeight) - Number(clientHeight) + 1, behavior: 'smooth' });
+    }
     // disable transitions on resize
     useEffect(() => {
         let timer: NodeJS.Timeout | null = null;
-        window.addEventListener('resize', function () {
+        window.addEventListener('resize', () => {
             if (timer) {
                 clearTimeout(timer);
                 timer = null;
@@ -45,17 +54,13 @@ const Main: React.FC = () => {
                 setStopTransitions(false);
                 timer = null;
             }, 100);
+            scrollMainTop();
         });
     }, []);
 
     const onTossHandler = () => setTossButton(Date.now);
     const onFocusHandler = () => {
-        const scrollTop = mainDiv?.current?.scrollTop;
-        const scrollHeight = mainDiv.current?.scrollHeight;
-        const clientHeight = mainDiv.current?.clientHeight;
-        if (
-            scrollTop || scrollTop === 0 && clientHeight && scrollHeight
-        ) mainDiv.current?.scrollTo({ top: Number(scrollHeight) - Number(clientHeight) + 1, behavior: 'smooth' });
+    //  scrollMainTop();   
     }
     const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, id: string) => {
         setSettings(prevSettings => {
