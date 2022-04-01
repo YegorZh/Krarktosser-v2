@@ -25,7 +25,7 @@ const Guide: React.FC = () => {
             ],
             notion: 
             'Following settings are extra advanced. It\'s adviced to ignore them if you don\'t know if you need them.'+
-            '\nIf you want to understand them it\'s adviced to set Krark\'s Thumb to 10 and experiment.'
+            '\nIf you want to understand them set Krark\'s Thumb to 10 and experiment.'
         },
         { name: `Min priority`, text: [`Minimum value to try and achieve for prioritized side.`] },
         { name: `Max priority`, text: [`Maximum value for prioritized side. Once achieved tries to maximize secondary side.`] },
@@ -39,9 +39,9 @@ const Guide: React.FC = () => {
     return (
         <div className="main__guide">
             <div className="guide__wrapper">
-                <h2 className="guide__title">What's this site about?</h2>
+                <h2 className="guide__title">What's this app about?</h2>
                 <p className="guide__text">
-                    The main feature of this site is coin tossing without hussle.
+                    The main feature of this application is coin tossing without hussle.
                     You specify the amount and get results, without waiting or tedious animations.
                     Advanced settings allow you to manipulate your outcomes,
                     simulating how card Krark's Thumb from Magic: The Gathering works.
