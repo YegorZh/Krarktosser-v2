@@ -6,6 +6,7 @@
   "devDependencies": {
     "@types/react": "^17.0.42",
     "@types/react-dom": "^17.0.14",
+    "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
     "json-loader": "^0.5.7",
