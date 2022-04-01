@@ -16,6 +16,8 @@ const InputField: React.FC<PropsInput> = ({ name, value, id, onChangeHandler, op
         {
             !options ?
                 <input
+                    inputMode="numeric" 
+                    pattern="[0-9]*"
                     disabled={disabled}
                     name={name}
                     type="text"
