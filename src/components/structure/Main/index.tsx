@@ -15,6 +15,7 @@ const Main: React.FC = () => {
     const [stopTransitions, setStopTransitions] = useState(false);
     const [isFirstRender, setIsFirstRender] = useState(true);
 
+    // request to api
     useEffect(() => {
         if (isFirstRender) {
             setIsFirstRender(false);
@@ -30,6 +31,7 @@ const Main: React.FC = () => {
             .then(() => setIsRequesting(false));
     }, [tossButton]);
 
+    // disable transitions on resize
     useEffect(() => {
         let timer: NodeJS.Timeout | null = null;
         window.addEventListener('resize', function () {
@@ -48,7 +50,12 @@ const Main: React.FC = () => {
 
     const onTossHandler = () => setTossButton(Date.now);
     const onFocusHandler = () => {
-        console.log(mainDiv.current?.scrollTop); if (mainDiv?.current?.scrollTop || mainDiv?.current?.scrollTop === 0) mainDiv.current.scrollTop = 500000000;
+        const scrollTop = mainDiv?.current?.scrollTop;
+        const scrollHeight = mainDiv.current?.scrollHeight;
+        const clientHeight = mainDiv.current?.clientHeight;
+        if (
+            scrollTop || scrollTop === 0 && clientHeight && scrollHeight
+        ) mainDiv.current?.scrollTo({ top: Number(scrollHeight) - Number(clientHeight) + 1, behavior: 'smooth' });
     }
     const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, id: string) => {
         setSettings(prevSettings => {
@@ -58,6 +65,7 @@ const Main: React.FC = () => {
             newSettings[id].value = validated || value;
             return newSettings;
         });
+        onFocusHandler();
     };
 
     const InputList = Object.keys(settings).map(key => <InputField
