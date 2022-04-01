@@ -98,6 +98,7 @@ const Main: React.FC = () => {
                 </div>
             </div>
             <div className={`main__blur ${showSettings && 'main__blur--appear'}`}></div>
+            <div className={`main__blur main__blur--upper ${showGuide && 'main__blur--appear'}`}></div>
             <div className={`main__guide-container ${showGuide && 'main__guide-container--appear'}`}><Guide /></div>
         </main>
     )

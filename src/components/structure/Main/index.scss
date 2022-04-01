@@ -90,6 +90,10 @@
     overflow: hidden;
     pointer-events: none;
     
+    &--upper {
+        z-index: 900;
+    }
+
     &--appear {
         opacity: 1;
     }
