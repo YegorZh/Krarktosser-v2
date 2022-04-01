@@ -4,4 +4,5 @@
  If you have any question on how to use the app check out it's info section.<br>
  To start flipping follow the <a href="">link.</a>
  
- 
+ P.S.<br>
+ You can add app to you home screen from your browser to use it in a standalone mode.
