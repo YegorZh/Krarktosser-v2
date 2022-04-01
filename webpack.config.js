@@ -53,7 +53,7 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new CopyPlugin({
       patterns: [
-        { from: "./public/icons", to: "icons" },
+        { from: "./public", to: "./", globOptions: { ignore: ['**/index.html'] } }
       ],
     }),
   ],
