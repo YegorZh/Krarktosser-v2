@@ -5,4 +5,8 @@
  To start flipping follow the <a href="">link.</a></p>
  <hr>
  <p>P.S.<br>
- You can add app to you home screen from your browser to use it in a standalone mode.</p>
+ You can add app to you home screen from your browser to use it in a standalone mode.<br>
+ <sub>If you're interested in old version or backend part of the app you can visit our <a href="https://github.com/YegorZh/Krarktosser">legacy repo</a>.</sub>
+ </p>
+ 
+
