@@ -30,6 +30,12 @@ const settingsData: StateSettings = {
         name: 'Amount',
         validation: defaultValidation,
     },
+    flipUntilLose: {
+        value: 'Off',
+        default: 'Off',
+        name: 'Flip until you lose',
+        options: ['Off', 'Heads', 'Tails']
+    },
     krarkAmount: {
         value: '0',
         default: '0',
@@ -52,10 +58,10 @@ const settingsData: StateSettings = {
         dependancy: defaultDependancy,
     },
     evenSpread: {
-        value: 'False',
-        default: 'False',
+        value: 'Off',
+        default: 'Off',
         name: 'Even spread',
-        options: ['True', 'False'],
+        options: ['Off', 'On'],
         dependancy: defaultDependancy,
     },
     minPrio: {

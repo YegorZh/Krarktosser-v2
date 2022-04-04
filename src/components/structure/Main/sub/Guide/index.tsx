@@ -5,6 +5,10 @@ const Guide: React.FC = () => {
     const settingsSection = [
         { name: 'Amount', text: ['How many coins to throw.'] },
         {
+            name: 'Flip until you lose', text: [
+                'Will stop the flipping process if a side opposite to the chosen one comes out as a result.\nCan be set to Off, Heads or Tails.']
+        },
+        {
             name: `Krark's Thumb`,
             text: [
                 `How many cards named "Krark's Thumb" you have in play.`,
@@ -20,19 +24,21 @@ const Guide: React.FC = () => {
         {
             name: `Even spread`,
             text: [
-                `If True tries to even out results, always choosing with "Krark's Thumb" effect the side that currently has the lowest outcome.`,
+                `If On tries to even out results, always choosing with "Krark's Thumb" effect the side that currently has the lowest outcome.`,
                 `For example having 2 Heads and 3 Tails going to make the program to try to choose heads during next flip.`
             ],
-            notion: 
-            'Following settings are extra advanced. It\'s adviced to ignore them if you don\'t know if you need them.'+
-            '\nIf you want to understand them set Krark\'s Thumb to 10 and experiment.'
+            notion:
+                'Following settings are extra advanced. It\'s adviced to ignore them if you don\'t know if you need them.' +
+                '\nIf you want to understand them set Krark\'s Thumb to 10 and experiment.'
         },
         { name: `Min priority`, text: [`Minimum value to try and achieve for prioritized side.`] },
         { name: `Max priority`, text: [`Maximum value for prioritized side. Once achieved tries to maximize secondary side.`] },
         { name: `Min secondary`, text: [`Minimum value to try and achieve for secondary side.`] },
         {
             name: `Max secondary`, text: [`Maximum value for secondary side. Once achieved tries to maximize prioritized side.`],
-            notion: `If any of the parameters overlap given priority is used:\nMin Priority > Min Secondary > Max Priority > Max Secondary > Even Spread > Priority`
+            notion:
+                `If any of the parameters overlap given priority is used:` +
+                `\nMax Priority > Max Secondary > Min Priority > Min Secondary > Even Spread > Priority`
         },
     ]
 
