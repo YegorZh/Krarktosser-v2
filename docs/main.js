@@ -40926,7 +40926,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-const defaultDependancy = { execute: (settings) => Number(settings.krarkAmount?.value) <= 0 };
+const defaultDependancy = {
+    execute: (settings) => Number(settings.krarkAmount?.value) <= 0
+        ||
+            Number(settings.coinsPerFlip?.value) <= 1
+};
 const removeLimiters = (value) => value.replace(/(\D+|^0+(?=[0-9]))/, '');
 const defaultValidation = {
     execute: (value) => {
@@ -40952,16 +40956,30 @@ const settingsData = {
         name: 'Flip until you lose',
         options: ['Off', 'Heads', 'Tails']
     },
-    krarkAmount: {
-        value: '0',
-        default: '0',
-        name: `Krark's Thumb`,
+    // krarkAmount: {
+    //     value: '0',
+    //     default: '0',
+    //     name: `Krark's Thumb`,
+    //     validation: {
+    //         execute: (value: string) => {
+    //             let out = value;
+    //             out = removeLimiters(out);
+    //             if (Number(out) > 10) out = "10";
+    //             if (out === '' || Number(out) < 0) out = '0';
+    //             return out;
+    //         }
+    //     }
+    // },
+    coinsPerFlip: {
+        value: '1',
+        default: '1',
+        name: `Coins per flip`,
         validation: {
             execute: (value) => {
                 let out = value;
                 out = removeLimiters(out);
-                if (Number(out) > 10)
-                    out = "10";
+                if (Number(out) > 1024)
+                    out = "1024";
                 if (out === '' || Number(out) < 0)
                     out = '0';
                 return out;
@@ -41039,23 +41057,31 @@ const Guide = () => {
                 'Will stop the flipping process if a side opposite to the chosen one comes out as a result.\nCan be set to Off, Heads or Tails.'
             ]
         },
+        // {
+        //     name: `Krark's Thumb`,
+        //     text: [
+        //         `How many cards named "Krark's Thumb" you have in play.`,
+        //         `For each you throw 2 coins exponentially and choose one of them for the outcome.` +
+        //         ` Meaning that at the value of 1 you throw 2 coins, at the value of 2 — 4, 3 — 8, 4 — 16, etc.`,
+        //     ],
+        //     notion: `Settings listed below won't take effect unless Krark's Thumb is larger than 0.`
+        // },
         {
-            name: `Krark's Thumb`,
+            name: `Coins per flip`,
             text: [
-                `How many cards named "Krark's Thumb" you have in play.`,
-                `For each you throw 2 coins exponentially and choose one of them for the outcome.` +
-                    ` Meaning that at the value of 1 you throw 2 coins, at the value of 2 — 4, 3 — 8, 4 — 16, etc.`,
+                `How many coins to flip for each toss. Pair with "Priority" for this parameter to be meaningful.`,
+                `E.g. if set to 10 and Amount is set to 50 Total Flips will be equal to 500 as a result.`
             ],
-            notion: `Settings listed below won't take effect unless Krark's Thumb is larger than 0.`
+            notion: `Settings listed below won't take effect unless "Coins per flip" is larger than 1.`
         },
         {
             name: `Priority`,
-            text: [`Which side to try to choose with "Krark's Thumb" effect. None, Heads or Tails.`]
+            text: [`Which side to try to choose with "Coins per flip".\nNone, Heads or Tails.`]
         },
         {
             name: `Even spread`,
             text: [
-                `If On tries to even out results, always choosing with "Krark's Thumb" effect the side that currently has the lowest outcome.`,
+                `If On tries to even out results, always choosing with "Coins per flip" the side that currently has the lowest outcome.`,
                 `For example having 2 Heads and 3 Tails going to make the program to try to choose heads during next flip.`
             ],
             notion: 'Following settings are extra advanced. It\'s adviced to ignore them if you don\'t know if you need them.' +
@@ -41073,7 +41099,7 @@ const Guide = () => {
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "main__guide" },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "guide__wrapper" },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: "guide__title" }, "What's this app about?"),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: "guide__text" }, "The main feature of this application is coin tossing without hussle. You specify the amount and get results, without waiting or tedious animations. Advanced settings allow you to manipulate your outcomes, simulating how card Krark's Thumb from Magic: The Gathering works.")),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: "guide__text" }, "The main feature of this application is coin tossing without hussle. You specify the amount and get results, without waiting or tedious animations. Advanced settings allow you to manipulate your outcomes, simulating some complex situations, including, but not limited to, interactions with a card named Krark's Thumb from Magic: The Gathering.")),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", { src: "https://c1.scryfall.com/file/scryfall-cards/large/front/7/8/78a5d49a-747e-4ec8-a20a-ca917c315774.jpg?1610836017", alt: "Krark's Thumb the card.", className: "guide__card" }),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "guide__wrapper" },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: "guide__title guide__title-settings" }, "Settings"),
