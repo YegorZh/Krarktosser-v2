@@ -8,7 +8,7 @@ import Guide from "./sub/Guide";
 import './index.scss';
 
 const Main: React.FC = () => {
-    const { showSettings, settings, setSettings, formDiv, showGuide, mainDiv } = useContext(appContext) as IAppContext;
+    const {showSettings, settings, setSettings, formDiv, showGuide, mainDiv } = useContext(appContext) as IAppContext;
     const [tossButton, setTossButton] = useState(0);
     const [isRequesting, setIsRequesting] = useState(false);
     const [results, setResults] = useState({ heads: 0, tails: 0, totalFlips: 0 });

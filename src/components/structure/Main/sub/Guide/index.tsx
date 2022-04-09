@@ -8,23 +8,31 @@ const Guide: React.FC = () => {
             name: 'Flip until you lose', text: [
                 'Will stop the flipping process if a side opposite to the chosen one comes out as a result.\nCan be set to Off, Heads or Tails.']
         },
+        // {
+        //     name: `Krark's Thumb`,
+        //     text: [
+        //         `How many cards named "Krark's Thumb" you have in play.`,
+        //         `For each you throw 2 coins exponentially and choose one of them for the outcome.` +
+        //         ` Meaning that at the value of 1 you throw 2 coins, at the value of 2 — 4, 3 — 8, 4 — 16, etc.`,
+        //     ],
+        //     notion: `Settings listed below won't take effect unless Krark's Thumb is larger than 0.`
+        // },
         {
-            name: `Krark's Thumb`,
+            name: `Coins per flip`,
             text: [
-                `How many cards named "Krark's Thumb" you have in play.`,
-                `For each you throw 2 coins exponentially and choose one of them for the outcome.` +
-                ` Meaning that at the value of 1 you throw 2 coins, at the value of 2 — 4, 3 — 8, 4 — 16, etc.`,
+                `How many coins to flip for each toss. Pair with "Priority" for this parameter to be meaningful.`,
+                `E.g. if set to 10 and Amount is set to 50 Total Flips will be equal to 500 as a result.`
             ],
-            notion: `Settings listed below won't take effect unless Krark's Thumb is larger than 0.`
+            notion: `Settings listed below won't take effect unless "Coins per flip" is larger than 1.`
         },
         {
             name: `Priority`,
-            text: [`Which side to try to choose with "Krark's Thumb" effect. None, Heads or Tails.`]
+            text: [`Which side to try to choose with "Coins per flip".\nNone, Heads or Tails.`]
         },
         {
             name: `Even spread`,
             text: [
-                `If On tries to even out results, always choosing with "Krark's Thumb" effect the side that currently has the lowest outcome.`,
+                `If On tries to even out results, always choosing with "Coins per flip" the side that currently has the lowest outcome.`,
                 `For example having 2 Heads and 3 Tails going to make the program to try to choose heads during next flip.`
             ],
             notion:
@@ -49,8 +57,8 @@ const Guide: React.FC = () => {
                 <p className="guide__text">
                     The main feature of this application is coin tossing without hussle.
                     You specify the amount and get results, without waiting or tedious animations.
-                    Advanced settings allow you to manipulate your outcomes,
-                    simulating how card Krark's Thumb from Magic: The Gathering works.
+                    Advanced settings allow you to manipulate your outcomes, simulating some complex situations,
+                    including, but not limited to, interactions with a card named Krark's Thumb from Magic: The Gathering.
                 </p>
             </div>
             <img
